@@ -193,7 +193,15 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-
+        raw_data = input('\nWould you like to see raw data? Enter yes or no.\n')
+        start = 0
+        end = 5
+        while raw_data != 'no':
+            print(df[start:end].to_json(orient='records', lines = True, indent = 4))
+            start = end
+            end += 5
+            raw_data = input('\nWould you like to see raw data? Enter yes or no.\n')
+            pass
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
